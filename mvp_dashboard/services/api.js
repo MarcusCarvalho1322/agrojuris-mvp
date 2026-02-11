@@ -1,9 +1,9 @@
-// Classe helper para fazer requisições
-// Usa CONFIG do arquivo config.js que deve ser carregado antes deste script
+// Helper class for making HTTP requests
+// Uses CONFIG from config.js which must be loaded before this script
 class ApiService {
   constructor() {
     this.baseURL = CONFIG.API_BASE_URL;
-    this.timeout = CONFIG.TIMEOUT;
+    this.timeout = CONFIG.TIMEOUT;  // Stored for future timeout implementation
   }
 
   async request(endpoint, options = {}) {
@@ -24,12 +24,12 @@ class ApiService {
 
       return await response.json();
     } catch (error) {
-      console.error('❌ Erro na requisição:', error);
+      console.error('❌ Request error:', error);
       throw error;
     }
   }
 
-  // Métodos auxiliares
+  // Helper methods
   get(endpoint) {
     return this.request(endpoint, { method: 'GET' });
   }
@@ -53,5 +53,5 @@ class ApiService {
   }
 }
 
-// Exporta uma instância singleton
+// Export a singleton instance
 const apiService = new ApiService();
