@@ -1,6 +1,5 @@
-import CONFIG from '../config.js';
-
 // Classe helper para fazer requisições
+// Usa CONFIG do arquivo config.js que deve ser carregado antes deste script
 class ApiService {
   constructor() {
     this.baseURL = CONFIG.API_BASE_URL;
@@ -54,4 +53,5 @@ class ApiService {
   }
 }
 
-export default new ApiService();
+// Exporta uma instância singleton
+const apiService = new ApiService();
