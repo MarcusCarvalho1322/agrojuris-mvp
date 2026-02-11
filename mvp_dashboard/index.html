@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AgroDefesa Intelligence Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="hero">
+      <div class="hero__content">
+        <div class="logo-lockup">
+          <img class="logo" src="assets/agrojuris-logo.png" alt="AgroJuris logo" />
+        </div>
+        <p class="eyebrow">AgroDefesa Intelligence Hub</p>
+        <h1>Credito destravado com inteligencia de dados</h1>
+        <p class="subhead">
+          Painel comercial para priorizar casos com maior chance de desbloqueio.
+        </p>
+        <div class="hero__meta">
+          <span class="pill">Hard data</span>
+          <span class="pill">MapBiomas</span>
+          <span class="pill">IBAMA + SICOR</span>
+        </div>
+      </div>
+      <div class="hero__cards">
+        <div class="kpi" id="kpi-total">
+          <span>Total</span>
+          <strong>--</strong>
+        </div>
+        <div class="kpi" id="kpi-nulidade">
+          <span>Nulidade alta</span>
+          <strong>--</strong>
+        </div>
+        <div class="kpi" id="kpi-embargo">
+          <span>Embargo</span>
+          <strong>--</strong>
+        </div>
+        <div class="kpi" id="kpi-revisar">
+          <span>Revisar</span>
+          <strong>--</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="control">
+        <label>Status IA</label>
+        <select id="statusFilter">
+          <option value="">Todos</option>
+        </select>
+      </div>
+      <div class="control">
+        <label>UF</label>
+        <select id="ufFilter">
+          <option value="">Todas</option>
+        </select>
+      </div>
+      <div class="control">
+        <label>Municipio</label>
+        <input id="municipioFilter" placeholder="Ex: SORRISO" />
+      </div>
+      <div class="control">
+        <label>Min multa (R$)</label>
+        <input id="minMulta" type="number" placeholder="500000" />
+      </div>
+      <div class="control">
+        <label>Max multa (R$)</label>
+        <input id="maxMulta" type="number" placeholder="5000000" />
+      </div>
+      <div class="control">
+        <label>Buscar nome</label>
+        <input id="search" placeholder="Nome do infrator" />
+      </div>
+      <div class="control buttons">
+        <button id="btnTop100">Top 100</button>
+        <button id="btnTop30" class="ghost">Top 30 VIP</button>
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Multa</th>
+            <th>Status IA</th>
+            <th>Municipio</th>
+            <th>UF</th>
+            <th>Tese</th>
+            <th>Alerta</th>
+            <th>Score</th>
+            <th>Contato</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </section>
+
+    <footer class="footer">MVP operativo. Atualizacao diaria via job.</footer>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

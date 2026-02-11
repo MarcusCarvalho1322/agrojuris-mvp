@@ -1,0 +1,26 @@
+name: MVP Daily Update
+
+on:
+  schedule:
+    - cron: "0 4 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r mvp_backend/requirements.txt
+
+      - name: Load data into Neon
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: python mvp_backend/load_from_csv.py
