@@ -1,1 +1,1 @@
-web: cd mvp_dashboard && python3 -m http.server $PORT
+web: cd mvp_backend && uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}
