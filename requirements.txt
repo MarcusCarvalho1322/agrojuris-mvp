@@ -1,3 +1,4 @@
-# Root requirements - see mvp_backend/requirements.txt for actual deps
-# This file helps Railway detect the project as Python
--r mvp_backend/requirements.txt
+fastapi==0.115.6
+uvicorn==0.30.6
+psycopg[binary]==3.2.13
+python-dotenv==1.0.1
