@@ -10,14 +10,10 @@ from db import get_conn
 
 app = FastAPI(title="AgroDefesa MVP API", version="0.1.0")
 
-origins = [
-    os.getenv("FRONTEND_ORIGIN", "*")
-]
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

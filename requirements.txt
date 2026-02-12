@@ -1,0 +1,3 @@
+# Root requirements - see mvp_backend/requirements.txt for actual deps
+# This file helps Railway detect the project as Python
+-r mvp_backend/requirements.txt
