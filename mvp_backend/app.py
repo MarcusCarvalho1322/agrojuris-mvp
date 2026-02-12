@@ -1,11 +1,12 @@
 import os
 from typing import Optional
-from fastapi import FastAPI, Query
-from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
-from db import get_conn
 
 load_dotenv()
+
+from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
+from db import get_conn
 
 app = FastAPI(title="AgroDefesa MVP API", version="0.1.0")
 
