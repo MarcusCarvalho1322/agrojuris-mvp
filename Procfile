@@ -1,1 +1,1 @@
-web: cd mvp_backend && uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}
+web: cd mvp_backend && python start.py

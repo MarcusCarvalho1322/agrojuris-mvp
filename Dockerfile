@@ -9,4 +9,4 @@ COPY mvp_backend/ ./
 
 ENV PYTHONUNBUFFERED=1
 
-CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["python", "start.py"]
