@@ -1,0 +1,27 @@
+name: Monitor Producao
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+
+jobs:
+  healthcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check backend health
+        run: |
+          curl --fail --silent --show-error https://web-production-77c2.up.railway.app/health > /dev/null
+
+      - name: Check backend stats
+        run: |
+          curl --fail --silent --show-error https://web-production-77c2.up.railway.app/stats > /dev/null
+
+      - name: Check backend leads
+        run: |
+          curl --fail --silent --show-error "https://web-production-77c2.up.railway.app/leads?limit=1" > /dev/null
+
+      - name: Check frontend
+        run: |
+          curl --fail --silent --show-error https://www.bizziagro.app/ > /dev/null
