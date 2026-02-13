@@ -1,7 +1,9 @@
 import os
+import json
 from typing import Optional
 from dotenv import load_dotenv
 from fastapi import HTTPException
+from pathlib import Path
 
 load_dotenv(override=False)
 
@@ -10,6 +12,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from db import get_conn
 
 app = FastAPI(title="AgroDefesa MVP API", version="0.1.0")
+FALLBACK_PATH = Path(__file__).parent / "fallback_leads.json"
+_fallback_cache = None
 
 app.add_middleware(
     CORSMiddleware,
@@ -25,6 +29,68 @@ def health():
     return {"status": "ok"}
 
 
+def get_fallback_rows():
+    global _fallback_cache
+    if _fallback_cache is not None:
+        return _fallback_cache
+    if not FALLBACK_PATH.exists():
+        return []
+    with open(FALLBACK_PATH, "r", encoding="utf-8") as f:
+        _fallback_cache = json.load(f)
+    return _fallback_cache
+
+
+def fallback_stats(rows):
+    by_status = {}
+    for row in rows:
+        key = row.get("status_ia") or ""
+        by_status[key] = by_status.get(key, 0) + 1
+    return {"total": len(rows), "by_status": by_status}
+
+
+def fallback_filters(rows):
+    ufs = sorted({r.get("uf") for r in rows if r.get("uf")})
+    municipios = sorted({r.get("municipio") for r in rows if r.get("municipio")})
+    statuses = sorted({r.get("status_ia") for r in rows if r.get("status_ia")})
+    return {"ufs": ufs, "municipios": municipios, "statuses": statuses}
+
+
+def fallback_leads(
+    rows,
+    status_ia: Optional[str],
+    uf: Optional[str],
+    municipio: Optional[str],
+    min_multa: Optional[float],
+    max_multa: Optional[float],
+    search: Optional[str],
+    limit: int,
+    offset: int,
+    sort: str,
+):
+    filtered = rows
+    if status_ia:
+        filtered = [r for r in filtered if (r.get("status_ia") or "") == status_ia]
+    if uf:
+        filtered = [r for r in filtered if (r.get("uf") or "") == uf]
+    if municipio:
+        filtered = [r for r in filtered if (r.get("municipio") or "") == municipio]
+    if min_multa is not None:
+        filtered = [r for r in filtered if (r.get("valor_multa") or 0) >= min_multa]
+    if max_multa is not None:
+        filtered = [r for r in filtered if (r.get("valor_multa") or 0) <= max_multa]
+    if search:
+        s = search.lower()
+        filtered = [r for r in filtered if s in (r.get("nome_infrator") or "").lower()]
+
+    if sort == "multa":
+        filtered.sort(key=lambda x: x.get("valor_multa") or 0, reverse=True)
+    else:
+        filtered.sort(key=lambda x: x.get("score_prioridade") or 0, reverse=True)
+
+    items = filtered[offset: offset + limit]
+    return {"items": items, "limit": limit, "offset": offset}
+
+
 @app.get("/stats")
 def stats():
     try:
@@ -36,8 +102,11 @@ def stats():
                     "SELECT status_ia, COUNT(*) FROM leads GROUP BY status_ia ORDER BY COUNT(*) DESC"
                 )
                 by_status = {row[0] or "": row[1] for row in cur.fetchall()}
-    except Exception as exc:
-        raise HTTPException(status_code=503, detail=f"DB error on /stats: {type(exc).__name__}")
+    except Exception:
+        rows = get_fallback_rows()
+        if rows:
+            return fallback_stats(rows)
+        raise HTTPException(status_code=503, detail="DB error on /stats and no fallback data")
 
     return {"total": total, "by_status": by_status}
 
@@ -53,8 +122,11 @@ def filters():
                 municipios = [r[0] for r in cur.fetchall() if r[0]]
                 cur.execute("SELECT DISTINCT status_ia FROM leads WHERE status_ia IS NOT NULL ORDER BY status_ia")
                 statuses = [r[0] for r in cur.fetchall() if r[0]]
-    except Exception as exc:
-        raise HTTPException(status_code=503, detail=f"DB error on /filters: {type(exc).__name__}")
+    except Exception:
+        rows = get_fallback_rows()
+        if rows:
+            return fallback_filters(rows)
+        raise HTTPException(status_code=503, detail="DB error on /filters and no fallback data")
 
     return {"ufs": ufs, "municipios": municipios, "statuses": statuses}
 
@@ -112,8 +184,22 @@ def leads(
             with conn.cursor() as cur:
                 cur.execute(sql, params)
                 rows = cur.fetchall()
-    except Exception as exc:
-        raise HTTPException(status_code=503, detail=f"DB error on /leads: {type(exc).__name__}")
+    except Exception:
+        rows = get_fallback_rows()
+        if rows:
+            return fallback_leads(
+                rows,
+                status_ia,
+                uf,
+                municipio,
+                min_multa,
+                max_multa,
+                search,
+                limit,
+                offset,
+                sort,
+            )
+        raise HTTPException(status_code=503, detail="DB error on /leads and no fallback data")
 
     keys = [
         "nome_infrator",
