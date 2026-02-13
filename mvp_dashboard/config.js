@@ -1,17 +1,15 @@
 // API configuration based on environment
 const getApiBaseUrl = () => {
-  // Priority: environment variable > production mode > localhost
-  // To use environment variables in production, configure in Railway:
-  // REACT_APP_API_BASE_URL=https://agrojuris-mvp-production.up.railway.app
+  // Priority: production hostname mapping > localhost
   
   // In an environment with build process (Vite, Webpack, etc), variables would be injected here
   // For now, we detect based on hostname
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
     
-    // If running in production (Railway, Vercel, etc)
+    // If running in production (Vercel, etc)
     if (hostname !== 'localhost' && hostname !== '127.0.0.1' && hostname !== '') {
-      return 'https://agrojuris-mvp-production.up.railway.app';
+      return 'https://web-production-77c2.up.railway.app';
     }
   }
   

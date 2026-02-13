@@ -1,6 +1,7 @@
 import os
 from typing import Optional
 from dotenv import load_dotenv
+from fastapi import HTTPException
 
 load_dotenv(override=False)
 
@@ -26,28 +27,34 @@ def health():
 
 @app.get("/stats")
 def stats():
-    with get_conn() as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT COUNT(*) FROM leads")
-            total = cur.fetchone()[0]
-            cur.execute(
-                "SELECT status_ia, COUNT(*) FROM leads GROUP BY status_ia ORDER BY COUNT(*) DESC"
-            )
-            by_status = {row[0] or "": row[1] for row in cur.fetchall()}
+    try:
+        with get_conn() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT COUNT(*) FROM leads")
+                total = cur.fetchone()[0]
+                cur.execute(
+                    "SELECT status_ia, COUNT(*) FROM leads GROUP BY status_ia ORDER BY COUNT(*) DESC"
+                )
+                by_status = {row[0] or "": row[1] for row in cur.fetchall()}
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"DB error on /stats: {type(exc).__name__}")
 
     return {"total": total, "by_status": by_status}
 
 
 @app.get("/filters")
 def filters():
-    with get_conn() as conn:
-        with conn.cursor() as cur:
-            cur.execute("SELECT DISTINCT uf FROM leads WHERE uf IS NOT NULL ORDER BY uf")
-            ufs = [r[0] for r in cur.fetchall() if r[0]]
-            cur.execute("SELECT DISTINCT municipio FROM leads WHERE municipio IS NOT NULL ORDER BY municipio")
-            municipios = [r[0] for r in cur.fetchall() if r[0]]
-            cur.execute("SELECT DISTINCT status_ia FROM leads WHERE status_ia IS NOT NULL ORDER BY status_ia")
-            statuses = [r[0] for r in cur.fetchall() if r[0]]
+    try:
+        with get_conn() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT DISTINCT uf FROM leads WHERE uf IS NOT NULL ORDER BY uf")
+                ufs = [r[0] for r in cur.fetchall() if r[0]]
+                cur.execute("SELECT DISTINCT municipio FROM leads WHERE municipio IS NOT NULL ORDER BY municipio")
+                municipios = [r[0] for r in cur.fetchall() if r[0]]
+                cur.execute("SELECT DISTINCT status_ia FROM leads WHERE status_ia IS NOT NULL ORDER BY status_ia")
+                statuses = [r[0] for r in cur.fetchall() if r[0]]
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"DB error on /filters: {type(exc).__name__}")
 
     return {"ufs": ufs, "municipios": municipios, "statuses": statuses}
 
@@ -100,10 +107,13 @@ def leads(
 
     params.extend([limit, offset])
 
-    with get_conn() as conn:
-        with conn.cursor() as cur:
-            cur.execute(sql, params)
-            rows = cur.fetchall()
+    try:
+        with get_conn() as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql, params)
+                rows = cur.fetchall()
+    except Exception as exc:
+        raise HTTPException(status_code=503, detail=f"DB error on /leads: {type(exc).__name__}")
 
     keys = [
         "nome_infrator",
