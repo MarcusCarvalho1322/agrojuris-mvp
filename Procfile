@@ -1,1 +1,1 @@
-web: cd mvp_backend && python start.py
+web: python start.py
