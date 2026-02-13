@@ -1,0 +1,33 @@
+.git
+.gitignore
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.log
+.env
+.env.*
+
+# Keep docker context lean
+_mapbiomas_profile
+_mapbiomas_reports
+dados_ibama
+dados_bc
+AUTOS DE INFRAÇÃO PLANILHAS
+Autos de Infração Ibama
+APRESENTAÇÕES
+DOSSIES_NULIDADE_ALTA
+AGROJURIS BRANDING
+*.zip
+*.7z
+*.rar
+*.mp4
+*.m4a
+*.pdf
+
+# Build only backend app code
+*
+!mvp_backend/
+!mvp_backend/**
+!Dockerfile
