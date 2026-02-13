@@ -1,0 +1,33 @@
+[2026-01-14 00:20:09] ============================================================
+[2026-01-14 00:20:09] MAPBIOMAS ALERTA - CLIENTE API OFICIAL V2
+[2026-01-14 00:20:09] ============================================================
+[2026-01-14 00:20:09] 
+[1/3] Autenticando na API...
+Traceback (most recent call last):
+  File "c:\Users\Marcus Carvalho PC\Documents\AgroDefesa_Dossie\mapbiomas_api_client.py", line 530, in main
+    log("\u2705 AutenticaþÒo bem-sucedida!")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Marcus Carvalho PC\Documents\AgroDefesa_Dossie\mapbiomas_api_client.py", line 39, in log
+    print(line)
+    ~~~~~^^^^^^
+  File "C:\Users\Marcus Carvalho PC\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 22: character maps to <undefined>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Marcus Carvalho PC\Documents\AgroDefesa_Dossie\mapbiomas_api_client.py", line 556, in <module>
+    main()
+    ~~~~^^
+  File "c:\Users\Marcus Carvalho PC\Documents\AgroDefesa_Dossie\mapbiomas_api_client.py", line 551, in main
+    log(f"\n\u274c ERRO DURANTE O PROCESSAMENTO: {e}")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Marcus Carvalho PC\Documents\AgroDefesa_Dossie\mapbiomas_api_client.py", line 39, in log
+    print(line)
+    ~~~~~^^^^^^
+  File "C:\Users\Marcus Carvalho PC\AppData\Local\Python\pythoncore-3.14-64\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u274c' in position 24: character maps to <undefined>

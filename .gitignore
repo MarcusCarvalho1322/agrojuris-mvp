@@ -7,3 +7,23 @@ __pycache__/
 *.pyc
 .DS_Store
 node_modules/
+
+# Large data/media (keep local, don't push)
+dados_ibama/
+dados_bc/
+AUTOS DE INFRAÇÃO PLANILHAS/
+Autos de Infração Ibama/
+APRESENTAÇÕES/
+_mapbiomas_profile/
+_mapbiomas_reports/
+
+# Archives and binary blobs
+*.zip
+*.7z
+*.rar
+*.m4a
+*.mp4
+*.mov
+
+# Office temp files
+~$*

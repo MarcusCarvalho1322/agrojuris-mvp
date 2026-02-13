@@ -1,0 +1,138 @@
+>>> Iniciando processamento de 2074 leads Diamante.
+[AVISO] Coordenada Zero/Nula para: EMERSON DE SOUZA. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: JOSE SOARES DA SILVA. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: NORTE MADEIRAS COMRCIO ATACADISTA DE MADEIRAS EIRELI. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: CELIO BATISTA MARTINS FILHO. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: SONIA MARIA DE PAULA. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: LEME EMPREENDIMENTOS E PARTICIPACOES LTDA. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: ARCOS BRASIL LTDA EPP. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: ALEXANDRE CAPUA MARTIGNAGO. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: MAGNUN ARAGON CAVALHEIRO. Tentando busca por local.
+[AVISO] Coordenada Zero/Nula para: FLIX PABLO PEREIRA DE SOUSA. Tentando busca por local.
+>>> Iniciando processamento de 2074 leads Diamante.
+[START] Processando Lead: EMERSON DE SOUZA (Coord: -12.36305555556, -54.05666666667)
+[FAIL] Erro no lead EMERSON DE SOUZA: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+    - waiting for" https://alerta.mapbiomas.org/login?request_params[callback_url]=https://alerta.mapbiomas.org" navigation to finish...
+
+[START] Processando Lead: JOSE SOARES DA SILVA (Coord: -12.36305555556, -54.05666666667)
+[FAIL] Erro no lead JOSE SOARES DA SILVA: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+    - waiting for" https://brasil.mapbiomas.org/" navigation to finish...
+    - navigated to "https://brasil.mapbiomas.org/"
+
+[START] Processando Lead: NORTE MADEIRAS COMRCIO ATACADISTA DE MADEIRAS EIRELI (Coord: -1.90833333333333, -48.79083333333333)
+[FAIL] Erro no lead NORTE MADEIRAS COMRCIO ATACADISTA DE MADEIRAS EIRELI: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+
+[START] Processando Lead: CELIO BATISTA MARTINS FILHO (Coord: -8.53839722223, -54.74601666667)
+[FAIL] Erro no lead CELIO BATISTA MARTINS FILHO: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+
+[START] Processando Lead: SONIA MARIA DE PAULA (Coord: -6.449036, -53.388483)
+[FAIL] Erro no lead SONIA MARIA DE PAULA: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+
+[START] Processando Lead: LEME EMPREENDIMENTOS E PARTICIPACOES LTDA (Coord: -9.73200833333, -64.93029722222)
+[FAIL] Erro no lead LEME EMPREENDIMENTOS E PARTICIPACOES LTDA: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+    - waiting for" https://brasil.mapbiomas.org/" navigation to finish...
+    - navigated to "https://brasil.mapbiomas.org/"
+
+[START] Processando Lead: ARCOS BRASIL LTDA EPP (Coord: -19.61111111112, -40.16683333334)
+[FAIL] Erro no lead ARCOS BRASIL LTDA EPP: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+    - waiting for" https://plataforma.alerta.mapbiomas.org/downloads" navigation to finish...
+    - navigated to "https://plataforma.alerta.mapbiomas.org/downloads"
+
+[START] Processando Lead: ALEXANDRE CAPUA MARTIGNAGO (Coord: -13.18508888889, -52.67371388889)
+[FAIL] Erro no lead ALEXANDRE CAPUA MARTIGNAGO: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+
+[START] Processando Lead: MAGNUN ARAGON CAVALHEIRO (Coord: -9.06416667, -56.69055556)
+[FAIL] Erro no lead MAGNUN ARAGON CAVALHEIRO: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+    - waiting for" https://alerta.mapbiomas.org/relatorio/" navigation to finish...
+    - navigated to "https://alerta.mapbiomas.org/relatorio/"
+    - waiting for" http://alerta.mapbiomas.org/wp-content/uploads/sites/17/2024/03/RAD2020_MapBiomasAlerta_FINAL.pdf" navigation to finish...
+    - navigated to "https://alerta.mapbiomas.org/wp-content/uploads/sites/17/2024/03/RAD2020_MapBiomasAlerta_FINAL.pdf"
+
+[START] Processando Lead: FLIX PABLO PEREIRA DE SOUSA (Coord: -5.94313888889, -53.35991694444)
+[FAIL] Erro no lead FLIX PABLO PEREIRA DE SOUSA: Page.fill: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("input[placeholder*='Pesquisar'], input[placeholder*='Buscar']")
+
+>>> Iniciando processamento de 2074 leads Diamante.
+[START] Processando Lead: EMERSON DE SOUZA (Coord: -12.36305555556, -54.05666666667)
+[AVISO] Não encontrei barra de busca para -12.36305555556, -54.05666666667. Tentando via URL direta.
+>>> Iniciando processamento de 2074 leads Diamante.
+[START] Processando Lead: EMERSON DE SOUZA (Coord: -12.36305555556, -54.05666666667)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-12.36305555556,-54.05666666667
+Alerta selecionado da lista.
+PDF salvo via print da página: EMERSON_DE_SOUZA_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: EMERSON DE SOUZA
+[START] Processando Lead: JOSE SOARES DA SILVA (Coord: -12.36305555556, -54.05666666667)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-12.36305555556,-54.05666666667
+Alerta selecionado da lista.
+>>> Iniciando processamento de 2074 leads Diamante.
+
+🚀 PROCESSANDO LOTE 1 (100 leads)...
+[START] Processando Lead: JOSE SOARES DA SILVA (Coord: -12.36305555556, -54.05666666667)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-12.36305555556,-54.05666666667
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para JOSE_SOARES_DA_SILVA. Tentando Print...
+Print de Segurança Gerado: JOSE_SOARES_DA_SILVA_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: JOSE SOARES DA SILVA
+[START] Processando Lead: NORTE MADEIRAS COMRCIO ATACADISTA DE MADEIRAS EIRELI (Coord: -1.90833333333333, -48.79083333333333)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-1.90833333333333,-48.79083333333333
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para NORTE_MADEIRAS_COMRCIO_ATACADISTA_DE_MADEIRAS_EIRELI. Tentando Print...
+Print de Segurança Gerado: NORTE_MADEIRAS_COMRCIO_ATACADISTA_DE_MADEIRAS_EIRELI_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: NORTE MADEIRAS COMRCIO ATACADISTA DE MADEIRAS EIRELI
+[START] Processando Lead: CELIO BATISTA MARTINS FILHO (Coord: -8.53839722223, -54.74601666667)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-8.53839722223,-54.74601666667
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para CELIO_BATISTA_MARTINS_FILHO. Tentando Print...
+Print de Segurança Gerado: CELIO_BATISTA_MARTINS_FILHO_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: CELIO BATISTA MARTINS FILHO
+[START] Processando Lead: SONIA MARIA DE PAULA (Coord: -6.449036, -53.388483)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-6.449036,-53.388483
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para SONIA_MARIA_DE_PAULA. Tentando Print...
+Print de Segurança Gerado: SONIA_MARIA_DE_PAULA_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: SONIA MARIA DE PAULA
+[START] Processando Lead: LEME EMPREENDIMENTOS E PARTICIPACOES LTDA (Coord: -9.73200833333, -64.93029722222)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-9.73200833333,-64.93029722222
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para LEME_EMPREENDIMENTOS_E_PARTICIPACOES_LTDA. Tentando Print...
+Print de Segurança Gerado: LEME_EMPREENDIMENTOS_E_PARTICIPACOES_LTDA_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: LEME EMPREENDIMENTOS E PARTICIPACOES LTDA
+[START] Processando Lead: ARCOS BRASIL LTDA EPP (Coord: -19.61111111112, -40.16683333334)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-19.61111111112,-40.16683333334
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para ARCOS_BRASIL_LTDA_EPP. Tentando Print...
+Print de Segurança Gerado: ARCOS_BRASIL_LTDA_EPP_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: ARCOS BRASIL LTDA EPP
+[START] Processando Lead: ALEXANDRE CAPUA MARTIGNAGO (Coord: -13.18508888889, -52.67371388889)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-13.18508888889,-52.67371388889
+Alerta selecionado da lista.
+Tentativa 1 (Relatório) falhou para ALEXANDRE_CAPUA_MARTIGNAGO. Tentando Print...
+Print de Segurança Gerado: ALEXANDRE_CAPUA_MARTIGNAGO_mapbiomas.pdf
+[SUCCESS] Relatório salvo para: ALEXANDRE CAPUA MARTIGNAGO
+[START] Processando Lead: MAGNUN ARAGON CAVALHEIRO (Coord: -9.06416667, -56.69055556)
+Navegando via URL: https://alerta.mapbiomas.org/#/map?q=-9.06416667,-56.69055556
+>>> Iniciando processamento de 2074 leads Diamante.
+
+🚀 PROCESSANDO LOTE 1 (100 leads)...
+[START] Processando Lead: EMERSON DE SOUZA (Coord: -12.36305555556, -54.05666666667)
+Buscando coordenadas: -12.36305555556, -54.05666666667
+Tentando clique no centro do mapa...
