@@ -22,12 +22,32 @@ STATUS_WEIGHT = {
 def to_float(value):
     if value is None:
         return None
-    value = str(value).strip()
-    if not value:
+    raw = str(value).strip().replace(" ", "")
+    if not raw:
         return None
-    value = value.replace(".", "").replace(",", ".")
+
+    if "." in raw and "," in raw:
+        if raw.rfind(".") > raw.rfind(","):
+            normalized = raw.replace(",", "")
+        else:
+            normalized = raw.replace(".", "").replace(",", ".")
+    elif "," in raw:
+        parts = raw.split(",")
+        if len(parts) == 2 and len(parts[1]) <= 2:
+            normalized = raw.replace(".", "").replace(",", ".")
+        else:
+            normalized = raw.replace(",", "")
+    elif "." in raw:
+        parts = raw.split(".")
+        if len(parts) == 2 and len(parts[1]) <= 2:
+            normalized = raw
+        else:
+            normalized = raw.replace(".", "")
+    else:
+        normalized = raw
+
     try:
-        return float(value)
+        return float(normalized)
     except ValueError:
         return None
 
